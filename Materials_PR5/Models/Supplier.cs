@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Materials_PR5;
+namespace Materials_PR5.Models;
 
 public partial class Supplier
 {
