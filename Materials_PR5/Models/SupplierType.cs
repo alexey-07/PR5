@@ -9,5 +9,7 @@ public partial class SupplierType
 
     public string TypeSupplier { get; set; } = null!;
 
+
+    // навигационные свойства
     public virtual ICollection<Supplier> Suppliers { get; set; } = new List<Supplier>();
 }
