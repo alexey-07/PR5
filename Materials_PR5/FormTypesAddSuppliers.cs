@@ -1,71 +1,89 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Materials_PR5.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Materials_PR5
 {
     public partial class FormTypesAddSuppliers : Form
     {
-       /* string msgError = "Поле не может быть пустым";*/
-        private object db;
+        string msgError = "Поле не может быть пустым";
+        private DbMaterialsContext? db;
 
         public FormTypesAddSuppliers()
         {
             InitializeComponent();
         }
-
-
-
-
-
-
-
-        private void TextBoxTypes_TextChanged(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            /*if (String.IsNullOrEmpty(comboBoxTypes.Text))
+            base.OnLoad(e);
+            this.db = new DbMaterialsContext();
+            this.db.SupplierTypes.Load();
+            List<SupplierType> typeSupplier = this.db.SupplierTypes.Local.OrderBy(o => o.TypeSupplier).ToList();
+            comboBoxTypes.DataSource = typeSupplier;
+            comboBoxTypes.DisplayMember = "TypeSupplier";
+            comboBoxTypes.ValueMember = "id";
+
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxName.Text))
             {
-                errorProvider.SetError(comboBoxTypes, msgError);
+                errorProvider.SetError(textBoxName, msgError);
                 buttonSave.Enabled = false;
             }
             else
             {
                 errorProvider.Clear();
                 buttonSave.Enabled = true;
-            }*/
+            }
         }
 
-        private void textBoxTypeName_Validated(object sender, EventArgs e)
+        private void textBoxName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            /*if (String.IsNullOrEmpty(comboBoxTypes.Text))
+            if (String.IsNullOrEmpty(textBoxName.Text))
             {
-                errorProvider.SetError(comboBoxTypes, msgError);
+                errorProvider.SetError(textBoxName, msgError);
                 buttonSave.Enabled = false;
             }
             else
             {
                 errorProvider.Clear();
                 buttonSave.Enabled = true;
-            }*/
+            }
         }
 
-    /*    private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void textBoxInn_TextChanged(object sender, EventArgs e)
         {
-            FormTypesAddSuppliers form =  new FormTypesAddSuppliers();
-          
-            var types =  
-            short index = -1;
-            foreach ( var type in types )
+            if (String.IsNullOrEmpty(textBoxInn.Text))
             {
-                form.comboBox1.Items.Add(u.TypeSupplier );
-
+                errorProvider.SetError(textBoxInn, msgError);
+                buttonSave.Enabled = false;
             }
+            else
+            {
+                errorProvider.Clear();
+                buttonSave.Enabled = true;
+            }
+        }
 
-        }*/
+        private void textBoxInn_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxInn.Text))
+            {
+                errorProvider.SetError(textBoxInn, msgError);
+                buttonSave.Enabled = false;
+            }
+            else
+            {
+                errorProvider.Clear();
+                buttonSave.Enabled = true;
+            }
+        }
+
+        private void checkBoxActive_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

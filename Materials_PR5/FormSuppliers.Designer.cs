@@ -77,6 +77,7 @@
             buttonEdit.TabIndex = 1;
             buttonEdit.Text = "Редактировать";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // buttonDel
             // 
@@ -90,6 +91,7 @@
             buttonDel.TabIndex = 2;
             buttonDel.Text = "Удалить";
             buttonDel.UseVisualStyleBackColor = false;
+            buttonDel.Click += buttonDel_Click;
             // 
             // buttonHisSup
             // 

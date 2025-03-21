@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Materials_PR5.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Materials_PR5;
+namespace Materials_PR5.Models;
 
 public partial class DbMaterialsContext : DbContext
 {
